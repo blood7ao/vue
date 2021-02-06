@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in list">{{ item }}</li>
+    </ul>
+
+    <button @click="push">push</button>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            list: ['a', 'b', 'c', 'd']
+        },
+
+        methods: {
+            push() {
+                // this.list.push("ccc")  响应式
+
+                this.list[0] = "bbb"   //不是响应式
+                Vue.set(this.list,0,'set')//vue提供
+
+                // this.list.push("aaa",'bbb')
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

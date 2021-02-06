@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn><a href="https://">aaaa</a>
+        <button>aaa</button>
+    </cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+</body>
+<template id="cpn">
+    <div>
+        <h1>slot</h1>
+        <slot>
+            <button>默认值</button>
+        </slot>
+    </div>
+</template>
+<script>
+    const vm = new Vue({
+            el: "#app",
+            components: {
+                cpn: {
+                    template: `#cpn`
+                }
+            }
+        }
+    )
+</script>
+</html>

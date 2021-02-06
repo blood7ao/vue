@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{ count }}</h1>
+    <!--    无参是（）可以省略-->
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+    <button @click="testEvent('aa',$event)">获取event</button>
+    <!--.stop阻止事件冒泡-->
+    <div @click="divClick">aaaa
+        <button @click.stop="click">按钮</button>
+    </div>
+    <!--    键盘事件-->
+    <input type="text" @keyup.enter="keyup">
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            count: 0,
+        },
+        methods: {
+            add() {
+                this.count++;
+            },
+            sub() {
+                this.count--;
+            },
+            testEvent(a, event) {
+                console.log(a, event);
+            },
+            divClick() {
+                console.log("divclick")
+            },
+            click() {
+                console.log("click")
+            },
+            keyup(){
+                console.log("keyup")
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>

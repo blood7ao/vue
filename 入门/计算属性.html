@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>{{ firstName }} {{ lastName }}</h2>
+    <h2>{{ fullName }}</h2>
+    <h2>{{ price }}</h2>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: "lebron",
+            lastName: "James",
+            books: [
+                {id: 110, name: "linux", price: 5},
+                {id: 111, name: "OS", price: 5},
+                {id: 113, name: "code", price: 8},
+                {id: 114, name: "teddy", price: 5}
+            ]
+        },
+        computed: {
+            // fullName: function () {
+            //     return this.firstName + " " + this.lastName
+            fullName: {
+                set: function () {
+                    //一般不用set  只读属性
+                },
+                get: function () {
+                    return this.firstName + " " + this.lastName
+                }
+            },
+
+            price: function () {
+                // return this.books[0].price + this.books[1].price + this.books[2].price + this.books[3].price
+                let result = 0;
+                for (let i = 0; i < this.books.length; i++) {
+                    result += this.books[i].price
+                }
+                return result
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

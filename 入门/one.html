@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+<div id="app">
+    <h1>{{ message + aa }} 哈哈哈</h1>
+    <!-- 覆盖zheli -->
+    <h2 v-text="aa">zheli</h2>
+    <!-- //不渲染 -->
+    <h2 v-pre>{{ message }}</h2>
+    <!-- 解析完再渲染 -->
+    <!-- 在vue解析之前v-cloak还在，之后就没了 -->
+    <h2 v-cloak></h2>
+</div>
+
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            aa: " teddy",
+            url: "<a href='https://www.baidu.com'>百度一下</a>"
+        },
+    });
+
+</script>
+</body>
+</html>

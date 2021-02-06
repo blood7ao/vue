@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ name }}
+    <form>
+        <label for="name">
+            <input type="text" id="name" placeholder="" v-model="name">
+        </label>
+
+        <label for="a">
+            <input type="radio" id="a" value="男" v-model="sex">男
+        </label>
+        <label for="b">
+            <input type="radio" id="b" value="女" v-model="sex">女
+        </label>
+
+        <h1>{{ sex }}</h1>
+        ---------------------------------------------------------
+        <label for="c">
+            <input type="checkbox" id="c" v-model="isAgree">同意协议
+        </label>
+        <button :disabled="!isAgree">下一步</button>
+        <h2>{{ isAgree }}</h2>
+
+        ---------------------------------------------------------
+
+
+        <input type="checkbox" value="足球" v-model="sport">足球
+        <input type="checkbox" value="蓝球" v-model="sport">蓝球
+        <input type="checkbox" value="羽毛球" v-model="sport">羽毛球
+        <input type="checkbox" value="乒乓球" v-model="sport">乒乓球
+        {{ sport }}<br>
+
+        ---------------------------------------------------------
+        <select name="sex" v-model="sex1" >
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+
+        {{ sex1 }}
+        <br>
+        ---------------------------------------------------------
+
+
+    </form>
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            name: "王涛",
+            radio: "radio",
+            sex: "男",
+            isAgree: false,
+            sport: [],
+            sex1: "男",
+        }
+    })
+
+</script>
+</body>
+</html>

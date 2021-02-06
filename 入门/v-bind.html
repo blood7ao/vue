@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <!--    动态绑定class-->
+    <h2 :class="{active:isActive , line:isLine}">{{ message }}</h2>
+    <h2 :class="getClassName()">{{ message }}</h2>
+    <button @click="onclick">按钮</button>
+    <!-- <img src="img/aa.png"> -->
+    <img v-bind:src="url" alt="aaa">
+    <!-- 语法糖 -->
+    <img :src="url2"/>
+
+</div>
+
+
+<script>
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            message: '6666666',
+            url: "",
+            url2: 'https://cn.vuejs.org/images/logo.png?_sw-precache=cf23526f451784ff137f161b8fe18d5a',
+            isActive: true,
+            isLine: true,
+        },
+
+        methods: {
+            onclick () {
+                this.isActive = !this.isActive
+            },
+
+            getClassName: function () {
+                return {active: this.isActive, line: this.isLine}
+            }
+        }
+    })
+</script>
+</body>
+</html>

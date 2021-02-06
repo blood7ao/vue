@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="3"></cpn>
+    <button @click="btnClick">按钮</button>
+</div>
+</body>
+<template id="cpn">
+    <div>我是子组件</div>
+
+</template>
+<script>
+    const vm = new Vue({
+            el: "#app",
+            data: {
+                messages: '你好',
+            },
+
+            methods: {
+                btnClick() {
+                    // console.log(this.$children)   //不灵活 下标会变
+                    // for (let c of this.$children) {
+                    //     console.log(c.name)
+                    //     c.showMessage()
+                    // }
+                    console.log(this.$refs)     //refs 对象类型 默认空
+                }
+            },
+            components: {
+                cpn: {
+                    template: `#cpn`,
+                    methods: {
+                        showMessage() {
+                            console.log("showMessage方法调用了")
+                        }
+                    },
+                    data() {
+                        return {
+                            name: '子组件的name被父组件调用了'
+                        }
+                    }
+                }
+            }
+        }
+    )
+</script>
+</html>

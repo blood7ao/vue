@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+</div>
+</body>
+<script>
+   const vm=new Vew({
+        el: '#app',
+        // data: {
+        //     formdata: {
+        //         account: this.account,
+        //         password: this.password,
+        //         name: this.name,
+        //         sex: this.sex,
+        //         status: this.status,
+        //     }
+        // },
+
+        methods: {
+            b() {
+                let formData = JSON.stringify(this.formdata);
+
+                axios({
+                    method: 'post',
+                    url: 'register.do',
+                    headers: {'Content-Type': "multipart/form-data"},
+                    withCredentials: true,
+                    data: formData,
+                }).then((res) => {
+                    console.log(res)
+                })
+
+            }
+
+
+        }
+
+
+    })
+</script>
+</html>

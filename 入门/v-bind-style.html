@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body bgcolor="aqua">
+<div id="app">
+    <h2 :style="getStyle()">{{ message }}</h2>
+</div>
+
+<script>
+    var VM = new Vue({
+        el: '#app',
+        data: {
+            message: "wang",
+
+            icolor: 'red',
+            size: '100px'
+        },
+
+        methods: {
+            getStyle() {
+                return {color: this.icolor, fontSize: this.size}
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

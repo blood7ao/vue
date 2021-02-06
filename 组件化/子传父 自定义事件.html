@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpnc @itemclick="recive"></cpnc>
+    <!--    接收-->
+</div>
+
+<template id="cpnc">
+    <div>
+        <button v-for="item in categories" @click="btnclick(item)">{{ item.name }}</button>
+    </div>
+</template>
+
+<script>
+
+
+    const vm = new Vue({
+        el: '#app',
+        methods: {
+            recive(item) {
+                console.log(item)
+            }
+        },
+
+        components: {
+            cpnc: {
+                template: `#cpnc`,
+                data() {
+                    return {
+                        categories: [
+                            {
+                                id: 'iPhone',
+                                name: 'iPhone4'
+                            }, {
+                                id: 'iPhone',
+                                name: 'iPhone5'
+                            }, {
+                                id: 'iPhone',
+                                name: 'iPhoneXr'
+                            }, {
+                                id: 'iPhone',
+                                name: 'iPhone12mini'
+                            }
+                        ]
+                    }
+                },
+
+                methods: {
+                    btnclick(item) {
+                        this.$emit('itemclick', item)   //发出
+                    }
+                }
+
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

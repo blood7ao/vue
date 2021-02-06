@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+</div>
+<template id="count">
+    <div><h2>{{ message }}</h2>
+        <button @click="sub">-</button>
+
+        <button @click="add">+</button>
+    </div>
+</template>
+<script>
+    Vue.component('cpn', {
+        template: `#count`,
+        data() {                         //必须是函数function且返回实例对象, 对象内部保存数据
+            return {
+                message: 0
+            }
+        },
+
+        methods: {
+            add() {
+                this.message++
+            },
+            sub() {
+                this.message--
+            }
+        }
+    })
+
+    const vm = new Vue({
+        el: '#app',
+
+    })
+
+</script>
+</body>
+</html>

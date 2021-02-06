@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+</div>
+
+<!--<script type="text/x-template" id="cpn">-->
+<!--    <div>抽离写法1-->
+<!--    </div>-->
+<!--</script>-->
+
+<template id="cpn">
+    <div>抽离2</div>
+</template>
+
+<script>
+    Vue.component("cpn", {
+        template: `#cpn`
+    })
+
+    const vm = new Vue({
+        el: '#app',
+    })
+
+</script>
+</body>
+</html>

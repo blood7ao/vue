@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <cpn :cmovies="movies" :cmessage="message" :cinfo="info">
+    </cpn>
+</div>
+<template id="cpn">
+    <div><h1>{{ cmessage }}</h1>
+        <h2>{{ cmovies }}</h2>
+        <h1>{{ cinfo }}</h1>
+    </div>
+
+
+</template>
+
+<script>
+
+
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'message',
+            movies: ['海王', '海尔兄弟', '偶爱'],
+            info: {
+                name: 'teddy',
+                age: 21,
+                height: 177
+            }
+        },
+        components: {
+            cpn: {
+                template: `#cpn`,
+                // props: ['cmovies', 'cmessage']
+                props: {
+                    // cmovies:Array,
+                    // smessage:String
+
+                    cmessage: {
+                        type: String,
+                        default: "默认值",//    默认值
+                        required: true //必须传值
+                    },
+
+                    cmovies: {
+                        type: Array,
+                        default: []
+                    },
+                    cinfo: {
+                        type: Object,
+                        default() {
+                            return {}
+                        }
+                    }
+
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

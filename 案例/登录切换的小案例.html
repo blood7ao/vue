@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>{{ type }}:<input type="text" :placeholder="placeholder">
+        <button @click="a">切换类型</button>
+    </div>
+
+    <span v-if="tag">
+        <label for="account">用户账号:</label><input type="text" id="account" placeholder="请输入账号" key="a">
+    </span>
+    <span v-else>
+        <label for="email">用户邮箱:</label>
+        <input type="text" id="email" placeholder="请输入邮箱" key="b">
+    </span>
+    <button @click="b">切换类型</button>
+
+
+</div>
+
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            type: "用户账号",
+            placeholder: "请输入账号",
+            tag: true,
+        },
+        methods: {
+            a() {
+                if (this.type === "用户账号") {
+                    this.type = "用户邮箱"
+                    this.placeholder = "请输入邮箱"
+
+                } else {
+                    this.type = "用户账号"
+                    this.placeholder = "请输入账号"
+                }
+            },
+
+            b() {
+                this.tag = !this.tag
+            }
+        }
+
+    })
+
+</script>
+</body>
+</html>
